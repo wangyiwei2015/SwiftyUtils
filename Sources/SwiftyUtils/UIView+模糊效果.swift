@@ -1,3 +1,4 @@
+import UIKit
 extension UIView {
     func addBlur(alpha: CGFloat, style: UIBlurEffect.Style) {
         let blur = UIVisualEffectView(effect: UIBlurEffect(style: style))
