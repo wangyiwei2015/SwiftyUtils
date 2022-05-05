@@ -41,4 +41,32 @@ extension UIViewController {
         }
         self.present(alert, animated: true, completion: completion)
     }
+    
+    /**
+     Quickly shows the alert.
+     - parameter for: alert title
+     - parameter description: alert message, default nil
+     - parameter tip: placeholder, default nil
+     - parameter defaultAns: default nil
+     - parameter confirmText: text on OK action button, default 'OK'
+     - parameter handler: user input callback
+     */
+    func ask(
+        for question: String,
+        description: String? = nil,
+        tip: String? = nil,
+        defaultAns: String? = nil,
+        confirmText: String = "OK",
+        _ handler: @escaping ((_ ans: String?)->Void)
+    ) {
+        let alert = UIAlertController(title: question, message: description, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {f in
+            f.placeholder = tip
+            f.text = defaultAns
+        })
+        alert.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(.init(title: confirmText, style: .default, handler: {action in
+            handler(alert.textFields!.first!.text)
+        }))
+    }
 }

@@ -12,6 +12,7 @@ A set of swift extensions for iOS.
 ### Extension UIViewController
 
 - UIViewController.alert 弹出提示
+- UIViewController.ask 快速得到用户输入
 
 ### Extension UIApplication
 
